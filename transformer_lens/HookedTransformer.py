@@ -1112,7 +1112,7 @@ class HookedTransformer(HookedRootModule):
             self.ln_final.to(devices.get_device_for_block_index(self.cfg.n_layers - 1, self.cfg))
         self.unembed.to(devices.get_device_for_block_index(self.cfg.n_layers - 1, self.cfg))
         for i, block in enumerate(self.blocks):
-            block.to(devices.get_device_for_block_index(self.cfg.n_layers - 1, self.cfg))
+            block.to(devices.get_device_for_block_index(i, self.cfg))
 
     @classmethod
     def from_pretrained(
